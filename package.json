@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/user-event": "^12.1.10",
-    "git-commit-msg-linter": "^3.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-		"lint": "eslint src/**/*.js{,x}",
+    "lint": "eslint src/**/*.js{,x}",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,6 +46,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "git-commit-msg-linter": "^3.2.8",
     "husky": "4.3.8",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
