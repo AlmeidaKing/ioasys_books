@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import bg_image from 'assets/images/background_image.png';
+import bg_image from 'assets/images/login_background_image.png';
 
 const Wrapper = styled.main`
   height: 100vh;

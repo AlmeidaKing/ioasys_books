@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 // screens:
-import { Login } from 'screens';
+import { Login, Dashboard } from 'screens';
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
       <Switch>
         <Redirect exact from='/' to='/login' />
         <Route path='/login' component={Login} />
+        <Route path='/dashboard' component={Dashboard} />
       </Switch>
     </Router>
   );
