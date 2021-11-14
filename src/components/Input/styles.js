@@ -61,19 +61,29 @@ const Wrapper = styled.div`
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     }
   }
-`;
 
-export const InputStyles = styled.input`
-  outline: none;
-  background-color: transparent;
-  color: #ffffff;
-  font-family: Heebo;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  input,
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    outline: none;
+    background-color: transparent;
+    -webkit-background-color: transparent;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+    font-family: Heebo;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
 
-  ::placeholder {
-    color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
+    --webkit-text-size-adjust: 0%;
+
+    ::placeholder {
+      color: inherit;
+    }
   }
 `;
 
