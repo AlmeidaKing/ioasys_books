@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // components
 import { Button } from 'components';
 
 // styles:
-import Wrapper, { InputStyles } from './styles';
+import Wrapper from './styles';
 
 const Input = ({
   value,
@@ -15,23 +15,37 @@ const Input = ({
   onButtonClick,
   errorMessage = '',
   type = 'text',
+  required,
+  name,
+  id,
 }) => {
-  const hasButtonComponent = buttonText && onButtonClick;
+  const [inputValue, setInputValue] = useState(value);
+
+  const handleOnChange = (value) => {
+    onChangeText(name, value);
+    setInputValue(value);
+  };
+
+  const hasButtonComponent = buttonText;
   return (
     <Wrapper>
       <div className='input-container'>
-        <span className='label'>{label}</span>
-        <InputStyles
-          value={value}
-          onChange={onChangeText}
+        <label htmlFor={id} className='label'>
+          {label}
+        </label>
+        <input
+          id={id}
+          value={inputValue}
+          name={name}
+          onChange={(e) => handleOnChange(e.target.value)}
           placeholder={placeholder}
-          hasButtonComponent={hasButtonComponent}
           type={type}
+          required={required}
         />
       </div>
       {hasButtonComponent && (
         <div className='button-container'>
-          <Button type='button' onClick={onButtonClick}>
+          <Button type='submit' onClick={onButtonClick}>
             {buttonText}
           </Button>
         </div>

@@ -3,9 +3,9 @@ import React from 'react';
 // styles:
 import Wrapper from './styles';
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick, type = 'button' }) => {
   return (
-    <Wrapper type='button' onClick={onClick}>
+    <Wrapper type={type} onClick={onClick}>
       {children}
     </Wrapper>
   );

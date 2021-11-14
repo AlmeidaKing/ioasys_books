@@ -13,7 +13,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   justify-content: center;
 
-  .inputs-container {
+  form {
     display: flex;
     flex-direction: column;
     gap: 16px;
