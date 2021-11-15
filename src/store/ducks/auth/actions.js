@@ -19,3 +19,21 @@ export const loginFailure = (payload) => {
     payload,
   };
 };
+
+export const logoutRequest = () => {
+  return {
+    type: AuthTypes.LOGOUT_REQUEST,
+  };
+};
+
+export const logoutSuccess = () => {
+  return {
+    type: AuthTypes.LOGOUT_SUCCESS,
+  };
+};
+
+export const logoutFailure = () => {
+  return {
+    type: AuthTypes.LOGOUT_FAILURE,
+  };
+};

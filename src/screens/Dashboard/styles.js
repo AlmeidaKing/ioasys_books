@@ -12,8 +12,22 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 1024px) {
+    padding: 42px 86px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 42px 100px;
+  }
+
   @media screen and (max-width: 425px) {
     padding: 16px;
+  }
+
+  section {
+    max-width: 1136px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   nav {
@@ -51,6 +65,42 @@ const Wrapper = styled.main`
 
   .books-container {
     margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+
+    @media screen and (max-width: 1255px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 425px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .page-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+
+    font-size: 12px;
+    line-height: 20px;
+
+    span {
+      margin-right: 8px;
+      font-weight: 400;
+    }
+
+    b {
+      font-weight: 500;
+    }
   }
 `;
 

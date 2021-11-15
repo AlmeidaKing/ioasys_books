@@ -3,10 +3,18 @@ import React from 'react';
 // styles:
 import Wrapper from './styles';
 
-const BookCard = ({ name, author, pagesNumber, company, publishDate }) => {
+const BookCard = ({
+  name,
+  author,
+  pagesNumber,
+  company,
+  publishDate,
+  imageUrl,
+  onClick,
+}) => {
   return (
-    <Wrapper>
-      <div className='image' />
+    <Wrapper onClick={onClick}>
+      <img className='image' src={imageUrl} />
 
       {/* book headers */}
       <div className='book-info'>

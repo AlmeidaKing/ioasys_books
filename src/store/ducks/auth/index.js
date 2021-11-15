@@ -2,7 +2,7 @@ import { AuthTypes } from './types';
 import { sagas } from './sagas';
 
 const INITIAL_STATE = {
-  isAuth: null,
+  authentication: { isAuth: false },
   loading: false,
   error: { isError: false, message: '' },
 };
@@ -21,7 +21,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case AuthTypes.LOGIN_SUCCESS:
       return {
         ...state,
-        isAuth: true,
+        authentication: {
+          isAuth: true,
+        },
         loading: false,
         error: { isError: false, message: '' },
       };
@@ -32,6 +34,12 @@ const reducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: { isError: true, message: action.payload.errorMessage },
       };
+
+    /**
+     * Logout Types
+     */
+    case AuthTypes.LOGOUT_REQUEST:
+      return { ...state, authentication: { isAuth: false } };
 
     default:
       return state;

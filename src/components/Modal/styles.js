@@ -15,6 +15,9 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 16px;
+    position: fixed;
+    overflow-y: scroll;
+    max-height: 100%;
   }
 
   @media screen and (max-width: 425px) {
@@ -61,15 +64,19 @@ const Wrapper = styled.div`
       flex-direction: column;
       max-width: unset;
       max-height: unset;
+      margin-top: 15rem;
       height: 100%;
       width: 100%;
       padding: 24px;
     }
 
+    @media screen and (max-width: 320px) {
+      margin-top: 35rem;
+    }
+
     .image {
       min-width: 349px;
       height: 512px;
-      background-color: red;
       margin-right: 48px;
 
       @media screen and (max-width: 425px) {

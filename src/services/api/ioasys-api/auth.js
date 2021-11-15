@@ -1,5 +1,7 @@
 import { callApiBase } from './base';
 
+const accessToken = localStorage.getItem('access-token');
+
 const authApi = {
   login: (payload) =>
     callApiBase({
@@ -8,6 +10,17 @@ const authApi = {
       method: 'POST',
       data: { ...payload },
     }),
+  refreshToken: (payload) => {
+    return callApiBase({
+      title: 'Refresh Token',
+      endpoint: '/auth/refresh-token',
+      method: 'POST',
+      data: { refreshToken: payload.refreshToken },
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+  },
 };
 
 export default authApi;

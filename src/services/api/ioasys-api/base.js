@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import authApi from './auth';
+
 const apiBase = axios.create({
   baseURL: `${process.env.REACT_APP_IOASYS_BOOK_API_BASE_URL}v1/`,
 });
@@ -55,6 +57,51 @@ const callApiBase = (call) => {
       return response;
     },
     async (error) => {
+      if (
+        error.response.config.url === '/auth/refresh-token' ||
+        !localStorage.getItem('refresh-token')
+      ) {
+        if (window.location.pathname !== '/login') {
+          localStorage.removeItem('refresh-token');
+          localStorage.removeItem('access-token');
+          window.location.href = '/';
+        }
+      } else if (error.response.status === 401) {
+        try {
+          const oldRefreshToken = localStorage.getItem('refresh-token');
+
+          if (oldRefreshToken !== '') {
+            const response = await authApi.refreshToken({
+              refreshToken: oldRefreshToken,
+            });
+
+            if (response.status === 204) {
+              localStorage.setItem(
+                'access-token',
+                response.headers.authorization
+              );
+
+              localStorage.setItem(
+                'refresh-token',
+                response.headers['refresh-token']
+              );
+
+              return apiBase(error.response.config.url, {
+                headers: {
+                  ...headers,
+                  authorization: `Bearer ${response.headers.authorization}`,
+                },
+                method: error.response.config.method,
+                data: error.response.config.data,
+                params: error.response.config.params,
+              });
+            }
+          }
+        } catch (err) {
+          return err;
+        }
+      }
+
       if (showConsoleLog) {
         console.error(`${title} - ERROR`, error);
       }
