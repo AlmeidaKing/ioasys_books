@@ -2,12 +2,13 @@ import { AuthTypes } from './types';
 import { sagas } from './sagas';
 
 const INITIAL_STATE = {
-  authentication: { isAuth: false },
+  authentication: { isAuth: false, user: null },
   loading: false,
   error: { isError: false, message: '' },
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
+  console.log('[action]', action);
   switch (action.type) {
     /**
      * Login types
@@ -23,6 +24,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         authentication: {
           isAuth: true,
+          user: action.payload,
         },
         loading: false,
         error: { isError: false, message: '' },

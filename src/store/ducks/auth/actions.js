@@ -7,9 +7,10 @@ export const loginRequest = (payload) => {
   };
 };
 
-export const loginSuccess = () => {
+export const loginSuccess = (payload) => {
   return {
     type: AuthTypes.LOGIN_SUCCESS,
+    payload,
   };
 };
 

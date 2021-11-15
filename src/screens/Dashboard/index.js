@@ -22,7 +22,9 @@ const Dashboard = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const {
-    auth,
+    auth: {
+      authentication: { user },
+    },
     books: {
       booksList: { list },
     },
@@ -40,6 +42,8 @@ const Dashboard = () => {
       })
     );
   }, [pageNumber]);
+
+  console.log('[user]', user);
 
   const handleGetBookDetails = (id) => {
     dispatch(BOOKS_ACTIONS.bookDetailsRequest({ bookId: id }));
@@ -67,7 +71,7 @@ const Dashboard = () => {
           <IoasysLogo color='#000' />
           <div className='user-area-container'>
             <span>
-              Bem vindo, <b>Guilherme!</b>
+              Bem vindo, <b>{user.name}!</b>
             </span>
             <LogoutButton onClick={handleLogout} />
           </div>

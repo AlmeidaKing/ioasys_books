@@ -16,6 +16,8 @@ export function* login({ payload }) {
   try {
     const response = yield call(authApi.login, data);
 
+    console.log('response', response);
+
     if (response.status === 200) {
       localStorage.setItem('access-token', response.headers.authorization, {
         expires: 1 / 96,
@@ -24,7 +26,7 @@ export function* login({ payload }) {
         expires: 1 / 8,
       });
 
-      yield put(loginSuccess());
+      yield put(loginSuccess(response.data));
     }
   } catch (err) {
     yield put(loginFailure({ errorMessage: err.response.data.errors.message }));
