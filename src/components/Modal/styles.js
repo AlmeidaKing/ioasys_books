@@ -159,6 +159,22 @@ const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
 
+        overflow-y: scroll;
+
+        ::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+          border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 10px #ab2680;
+        }
+
         &__title {
           font-size: 12px;
           font-weight: 500;
