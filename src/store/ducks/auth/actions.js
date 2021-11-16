@@ -7,9 +7,10 @@ export const loginRequest = (payload) => {
   };
 };
 
-export const loginSuccess = () => {
+export const loginSuccess = (payload) => {
   return {
     type: AuthTypes.LOGIN_SUCCESS,
+    payload,
   };
 };
 
@@ -17,5 +18,23 @@ export const loginFailure = (payload) => {
   return {
     type: AuthTypes.LOGIN_FAILURE,
     payload,
+  };
+};
+
+export const logoutRequest = () => {
+  return {
+    type: AuthTypes.LOGOUT_REQUEST,
+  };
+};
+
+export const logoutSuccess = () => {
+  return {
+    type: AuthTypes.LOGOUT_SUCCESS,
+  };
+};
+
+export const logoutFailure = () => {
+  return {
+    type: AuthTypes.LOGOUT_FAILURE,
   };
 };

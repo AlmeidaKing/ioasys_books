@@ -17,7 +17,10 @@ import Wrapper from './styles';
 
 const Login = () => {
   const {
-    auth: { isAuth, error },
+    auth: {
+      authentication: { isAuth },
+      error,
+    },
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
@@ -71,6 +74,7 @@ const Login = () => {
       <form method='POST' onSubmit={handleSubmit}>
         <IoasysLogo />
         <Input
+          value={formik.values.email}
           label='Email'
           id='email'
           name='email'
@@ -81,6 +85,7 @@ const Login = () => {
           label='Senha'
           id='password'
           name='password'
+          value={formik.values.password}
           placeholder='••••••••••••'
           onChangeText={setFieldValue}
           buttonText='Entrar'

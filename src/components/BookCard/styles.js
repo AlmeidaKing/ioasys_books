@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   border-radius: 4px;
   box-shadow: 0px 6px 24px 0px #54105f21;
+  cursor: pointer;
 
   @media screen and (max-width: 425px) {
     width: 100%;
@@ -17,7 +18,6 @@ const Wrapper = styled.div`
   .image {
     width: 81px;
     height: 122px;
-    background-color: orange;
     margin-right: 16px;
   }
 
@@ -25,6 +25,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: calc(272px - 113px);
 
     &__headers {
       display: flex;
@@ -34,6 +35,10 @@ const Wrapper = styled.div`
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: calc(100% - 16px);
       }
 
       &__author {
@@ -41,6 +46,10 @@ const Wrapper = styled.div`
         font-weight: 400;
         line-height: 20px;
         color: #ab2680;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: calc(100% - 16px);
       }
     }
 
@@ -53,6 +62,11 @@ const Wrapper = styled.div`
         font-weight: 400;
         line-height: 20px;
         color: #999999;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: calc(100% - 16px);
       }
     }
   }
