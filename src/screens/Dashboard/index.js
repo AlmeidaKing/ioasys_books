@@ -20,6 +20,7 @@ import Wrapper from './styles';
 
 const Dashboard = () => {
   const [modalOpened, setModalOpened] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const {
     auth: {
@@ -43,7 +44,18 @@ const Dashboard = () => {
     );
   }, [pageNumber]);
 
-  console.log('[user]', user);
+  useEffect(() => {
+    if (user) {
+      setUserInfo(user);
+    } else {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        setUserInfo(JSON.parse(userData));
+      } else {
+        push('/login');
+      }
+    }
+  });
 
   const handleGetBookDetails = (id) => {
     dispatch(BOOKS_ACTIONS.bookDetailsRequest({ bookId: id }));
@@ -51,6 +63,7 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('user');
     dispatch(AUTH_ACTIONS.logoutRequest());
     push('/login');
   };
@@ -70,9 +83,11 @@ const Dashboard = () => {
         <nav>
           <IoasysLogo color='#000' />
           <div className='user-area-container'>
-            <span>
-              Bem vindo, <b>{user.name}!</b>
-            </span>
+            {userInfo && (
+              <span>
+                Bem vindo, <b>{userInfo.name}!</b>
+              </span>
+            )}
             <LogoutButton onClick={handleLogout} />
           </div>
         </nav>

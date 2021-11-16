@@ -26,6 +26,8 @@ export function* login({ payload }) {
         expires: 1 / 8,
       });
 
+      localStorage.setItem('user', JSON.stringify(response.data));
+
       yield put(loginSuccess(response.data));
     }
   } catch (err) {
